@@ -20,7 +20,7 @@ export default function RudimentPage() {
     const metronome = useMetronome({
         playAccentSound,
         playTickSound,
-        defaultBPM: 60,
+        defaultBPM: 120,
         timeSignature: TimeSignatures.CommonTime,
     })
 

@@ -16,8 +16,14 @@ const useMetronome = ({
         setBeat(prev => (prev + 1) % timeSignature.getBeatsPerMeasure())
     }
 
-    const start = () => setIsPlaying(true)
-    const stop = () => setIsPlaying(false)
+    const start = () => {
+        setBeat(0)
+        setIsPlaying(true)
+    }
+    const stop = () => {
+        setIsPlaying(false)
+        setBeat(0)
+    }
     const increaseBPM = () => setBPM(prev => prev + 1)
     const decreaseBPM = () => setBPM(prev => prev - 1)
     const togglePlay = () => isPlaying ? stop() : start()
@@ -30,7 +36,7 @@ const useMetronome = ({
             (beat === 0) ? playAccentSound() : playTickSound()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [beat])
+    }, [isPlaying, beat])
 
     return {
         beat,

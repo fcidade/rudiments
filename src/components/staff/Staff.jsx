@@ -8,14 +8,15 @@ import { useEffect } from "react"
 export default function Staff({
     metronome,
     book,
-    playSnare = (hand) => { },
     isPlaying = false,
+    playSnare = () => { },
     setIsPlaying = () => { },
 }) {
 
     const playBookNotes = (notes = []) => {
         const [note, ...notesLeft] = notes
         if (!note) {
+            metronome.stop()
             setIsPlaying(false)
             return
         }
@@ -24,14 +25,17 @@ export default function Staff({
             metronome.timeSignature.getIntervalBetweenEachMeasureInMs(metronome.bpm) / note.divisionValue
         )
 
+        playSnare(note.hand)
         setTimeout(() => {
-            playSnare(note.hand)
             playBookNotes(notesLeft)
         }, noteDuration)
     }
 
     useEffect(() => {
-        isPlaying && playBookNotes(book.notes)
+        if (isPlaying) {
+            metronome.start()
+            playBookNotes(book.notes)
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPlaying])
 
