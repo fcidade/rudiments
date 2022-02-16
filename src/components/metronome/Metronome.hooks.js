@@ -14,9 +14,7 @@ const useMetronome = ({
     const { play: playTickSound } = useAudio(tickAudio)
 
     const tickSound = () => {
-        if (isPlaying) {
-            (beat === 0) ? playAccentSound() : playTickSound()
-        }
+        (beat === 0) ? playAccentSound() : playTickSound()
         setBeat(prev => (prev + 1) % 4)
     }
 
@@ -27,7 +25,7 @@ const useMetronome = ({
     const togglePlay = () => isPlaying ? stop() : start()
 
     const timeBetweenEachTick = 1000 * 60 / bpm
-    useInterval(tickSound, timeBetweenEachTick)
+    useInterval(tickSound, isPlaying ? timeBetweenEachTick : null)
 
     return {
         beat,
