@@ -7,26 +7,26 @@ import { useEffect } from "react"
 
 export default function Staff({
     metronome,
-    playSnare,
     book,
+    playSnare = (hand) => { },
     isPlaying = false,
-    setIsPlaying,
+    setIsPlaying = () => { },
 }) {
 
-    const playBookNotes = (notesLeft = []) => {
-        const [head, ...tail] = notesLeft
-        if (!head) {
+    const playBookNotes = (notes = []) => {
+        const [note, ...notesLeft] = notes
+        if (!note) {
             setIsPlaying(false)
             return
         }
 
         const noteDuration = Math.floor(
-            metronome.timeSignature.getIntervalBetweenEachMeasureInMs(metronome.bpm) / head.divisionValue
+            metronome.timeSignature.getIntervalBetweenEachMeasureInMs(metronome.bpm) / note.divisionValue
         )
 
         setTimeout(() => {
-            playSnare()
-            playBookNotes(tail)
+            playSnare(note.hand)
+            playBookNotes(notesLeft)
         }, noteDuration)
     }
 

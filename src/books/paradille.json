@@ -1,0 +1,100 @@
+{
+    "notes": [
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "right"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        },
+        {
+            "type": "note",
+            "duration": "16th",
+            "divisionValue": 16,
+            "hand": "left"
+        }
+    ]
+}

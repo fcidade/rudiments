@@ -6,11 +6,12 @@ import useMetronome from "../../components/metronome/useMetronome";
 import Staff from "../../components/staff/Staff";
 import useAudio from "../../hooks/useAudio";
 
-import singleStrokeBook from '../../books/single_stroke.json'
+import currentBook from '../../books/paradille.json'
 import TimeSignatures from "../../music_notation/TimeSignatures";
 
 export default function RudimentPage() {
-    const { play: playSnare } = useAudio('/assets/audio/snares/Snare 6.wav')
+    const { play: playSnareSound1 } = useAudio('/assets/audio/snares/Snare 6.wav')
+    const { play: playSnareSound2 } = useAudio('/assets/audio/snares/Snare 7.wav')
     const { play: playAccentSound } = useAudio('/assets/audio/tick.wav')
     const { play: playTickSound } = useAudio('/assets/audio/accent.wav')
 
@@ -28,8 +29,16 @@ export default function RudimentPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const hitLeft = () => { playSnare() }
-    const hitRight = () => { playSnare() }
+    const playSnare = (hand) => {
+        if (hand.toLocaleLowerCase() === "left") {
+            playSnareSound1()
+        } else {
+            playSnareSound2()
+        }
+    }
+
+    const hitLeft = () => { playSnare("left") }
+    const hitRight = () => { playSnare("right") }
 
     return (
         <div>
@@ -39,7 +48,7 @@ export default function RudimentPage() {
             <h1>Single Stroke</h1>
             <Staff
                 metronome={metronome}
-                book={singleStrokeBook}
+                book={currentBook}
                 playSnare={playSnare}
                 isPlaying={isPlayingStaff}
                 setIsPlaying={setIsPlayingStaff} />
