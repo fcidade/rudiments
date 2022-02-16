@@ -24,6 +24,7 @@ const useMetronome = ({
         setIsPlaying(false)
         setBeat(0)
     }
+
     const increaseBPM = () => setBPM(prev => prev + 1)
     const decreaseBPM = () => setBPM(prev => prev - 1)
     const togglePlay = () => isPlaying ? stop() : start()
