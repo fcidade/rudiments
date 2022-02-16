@@ -1,21 +1,19 @@
-import { useState } from "react";
-import useAudio from "../../hooks/useAudio";
+import { useEffect, useState } from "react";
 import useInterval from "../../hooks/useInterval";
+import TimeSignatures from "../../music_notation/TimeSignatures";
 
 const useMetronome = ({
     defaultBPM = 180,
-    accentAudio,
-    tickAudio,
+    playAccentSound,
+    playTickSound,
+    timeSignature = TimeSignatures.CommonTime,
 }) => {
     const [beat, setBeat] = useState(0)
     const [bpm, setBPM] = useState(defaultBPM)
     const [isPlaying, setIsPlaying] = useState(false)
-    const { play: playAccentSound } = useAudio(accentAudio)
-    const { play: playTickSound } = useAudio(tickAudio)
 
     const tickSound = () => {
-        (beat === 3) ? playAccentSound() : playTickSound()
-        setBeat(prev => (prev + 1) % 4)
+        setBeat(prev => (prev + 1) % timeSignature.getBeatsPerMeasure())
     }
 
     const start = () => setIsPlaying(true)
@@ -27,10 +25,18 @@ const useMetronome = ({
     const timeBetweenEachTick = 1000 * 60 / bpm
     useInterval(tickSound, isPlaying ? timeBetweenEachTick : null)
 
+    useEffect(() => {
+        if (isPlaying) {
+            (beat === 0) ? playAccentSound() : playTickSound()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [beat])
+
     return {
         beat,
         isPlaying,
         bpm,
+        timeSignature,
         tickSound,
         start,
         stop,
