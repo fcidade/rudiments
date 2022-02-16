@@ -14,7 +14,7 @@ const useMetronome = ({
     const { play: playTickSound } = useAudio(tickAudio)
 
     const tickSound = () => {
-        (beat === 0) ? playAccentSound() : playTickSound()
+        (beat === 3) ? playAccentSound() : playTickSound()
         setBeat(prev => (prev + 1) % 4)
     }
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Snare 20.wav-eb726bf97a1d0f62bb6c2bab9d6f89b2.sample"
+
+[deps]
+
+source_file="res://assets/sounds/snares/Snare 20.wav"
+dest_files=[ "res://.import/Snare 20.wav-eb726bf97a1d0f62bb6c2bab9d6f89b2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
