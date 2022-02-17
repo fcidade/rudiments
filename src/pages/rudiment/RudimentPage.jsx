@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BulletMetronome from "../../components/metronome/BulletMetronome";
 import Metronome from "../../components/metronome/Metronome";
 import useMetronome from "../../components/metronome/useMetronome";
 import Staff from "../../components/staff/Staff";
 import useAudio from "../../hooks/useAudio";
 
-import currentBook from '../../books/paradille.json'
 import TimeSignatures from "../../music_notation/TimeSignatures";
 
 export default function RudimentPage() {
+    const { id: bookID } = useParams()
+
     const { play: playSnareSound1 } = useAudio('/assets/audio/snares/Snare 6.wav')
     const { play: playSnareSound2 } = useAudio('/assets/audio/snares/Snare 7.wav')
     const { play: playAccentSound } = useAudio('/assets/audio/tick.wav')
     const { play: playTickSound } = useAudio('/assets/audio/accent.wav')
 
+    const [book, setBook] = useState(null)
     const [isPlayingStaff, setIsPlayingStaff] = useState(false)
 
     const metronome = useMetronome({
@@ -25,9 +27,11 @@ export default function RudimentPage() {
     })
 
     useEffect(() => {
-        // metronome.togglePlay()
+        if (book === null) {
+            setBook(require(`../../books/${bookID}.json`))
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [book])
 
     const playSnare = (hand) => {
         if (hand.toLocaleLowerCase() === "left") {
@@ -48,7 +52,7 @@ export default function RudimentPage() {
             <h1>Single Stroke</h1>
             <Staff
                 metronome={metronome}
-                book={currentBook}
+                book={book}
                 playSnare={playSnare}
                 isPlaying={isPlayingStaff}
                 setIsPlaying={setIsPlayingStaff} />

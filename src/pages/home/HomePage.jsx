@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 
+import { books } from "../../books"
+
 function RudimentCard({
     id = 0,
     name = 'Single Stroke',
@@ -9,15 +11,16 @@ function RudimentCard({
     return (
         <Link to={`/rudiment/${id}`}>
             {name}<br />
-            {timeSignature} - {difficulty}<br />
+            {timeSignature.getLabel()} - {difficulty}<br />
+            <hr />
         </Link>
     )
 }
 
 export default function HomePage() {
 
-    const cards = new Array(10).fill(0).map((_, i) => (
-        <RudimentCard key={i} />
+    const cards = books.map((book) => (
+        <RudimentCard key={book.id} {...book} />
     ))
 
     return (
