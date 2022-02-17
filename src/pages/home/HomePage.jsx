@@ -18,7 +18,6 @@ function RudimentCard({
 }
 
 export default function HomePage() {
-
     const cards = books.map((book) => (
         <RudimentCard key={book.id} {...book} />
     ))

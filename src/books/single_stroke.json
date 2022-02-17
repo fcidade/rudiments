@@ -96,5 +96,23 @@
             "divisionValue": 16,
             "hand": "left"
         }
+    ],
+    "visuals": [
+        {
+            "img": "semiquavers_4_joined",
+            "duration": 4
+        },
+        {
+            "img": "semiquavers_4_joined",
+            "duration": 4
+        },
+        {
+            "img": "semiquavers_4_joined",
+            "duration": 4
+        },
+        {
+            "img": "semiquavers_4_joined",
+            "duration": 4
+        }
     ]
 }

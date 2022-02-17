@@ -31,7 +31,7 @@ export default function RudimentPage() {
             setBook(require(`../../books/${bookID}.json`))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [book])
+    }, [])
 
     const playSnare = (hand) => {
         if (hand.toLocaleLowerCase() === "left") {
